@@ -1,11 +1,13 @@
 Package: pleiotropy
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Pleiotropy with cross-trait association methods
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+Authors@R: person("Sander", "Lamballais", 
+    email = "lamballais.sander@gmail.com", 
+    role = c("aut", "cre"),
+    comment = c(ORCID = "0000-0003-3118-6330"))
+Description: Bundles a set of cross-trait association methods.
+License: GPL (>= 3)
+BugReports: https://github.com/slamballais/pleiotropy/issues
 Encoding: UTF-8
 LazyData: true
