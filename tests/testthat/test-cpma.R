@@ -25,4 +25,25 @@ test_that("cpma can deal with illogical values", {
   expect_error(cpma(p_nan))
   expect_error(cpma(p_neg))
   expect_error(cpma(p_char))
+
+  expect_error(cpma(p_2, epsilon = "test"))
+  expect_error(cpma(p_2, epsilon = -1))
+  expect_error(cpma(p_2, epsilon = 2))
+
+  expect_error(cpma(p_2, .THRESHOLD = "test"))
+  expect_error(cpma(p_2, .THRESHOLD = -1))
+  expect_error(cpma(p_2, .THRESHOLD = 2))
+
+  expect_error(cpma(p_2, .MAXVAL = "test"))
+  expect_error(cpma(p_2, .MAXVAL = -1))
+  expect_error(cpma(p_2, .MAXVAL = 2))
+})
+
+# handling extreme values
+p_0 <- list()
+p_1 <- list(0.05)
+
+test_that("cpma can deal with extreme values", {
+  expect_error(cpma(p_0))
+  expect_error(cpma(p_1))
 })
