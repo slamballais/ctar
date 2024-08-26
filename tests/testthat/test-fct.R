@@ -5,11 +5,13 @@ p_10 <- as.list(rep(0.05, 10))
 test_that("fct works for two p-values", {
   expect_equal(fct(p_2)$p, 0.01747866, tolerance = 1E-5)
   expect_equal(fct(p_2)$n, 0)
+  expect_equal(fct(p_2)$p_exp, -log10(0.01747866), tolerance = 1E-5)
 })
 
 test_that("fct works for ten p-values", {
   expect_equal(fct(p_10)$p, 7.341634e-06, tolerance = 1E-5)
   expect_equal(fct(p_10)$n, 0)
+  expect_equal(fct(p_10)$p_exp, -log10(7.341634e-06), tolerance = 1E-5)
 })
 
 # handling exceptions

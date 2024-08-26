@@ -26,9 +26,7 @@ fct <- function(p_in, .THRESHOLD = 5E-8, .MAXVAL = 1, .FIXED = TRUE) {
   if (!is.logical(.FIXED)) stop("`.FIXED` should be `TRUE` or `FALSE`")
 
   # run
-  final_p <- rep(NA, l[1])
-  final_n <- rep(NA, l[1])
-  final_traits <- vector(mode = "list", length = l[1])
+  final <- make_final(l)
 
   for (i in seq_len(l[1])) {
     x <- p[i, ]
@@ -47,11 +45,10 @@ fct <- function(p_in, .THRESHOLD = 5E-8, .MAXVAL = 1, .FIXED = TRUE) {
       traits <- o$ix[1:nn]
     }
 
-    final_p[i] <- min(p_out, 1)
-    final_n[i] <- n2
-    final_traits[[i]] <- traits
+    final$p[i] <- min(p_out, 1)
+    final$n[i] <- n2
+    final$traits[[i]] <- traits
+    final$p_exp[i] <- -log10(final$p[i])
   }
-
-  final <- list(p = final_p, n = final_n, traits = final_traits)
   return(final)
 }
