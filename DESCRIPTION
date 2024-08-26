@@ -1,6 +1,6 @@
-Package: pleiotropy
+Package: ctar
 Type: Package
-Title: Pleiotropy with cross-trait association methods
+Title: Cross-trait association methods in R
 Version: 0.1.0
 Authors@R: person("Sander", "Lamballais", 
     email = "lamballais.sander@gmail.com", 
@@ -8,6 +8,6 @@ Authors@R: person("Sander", "Lamballais",
     comment = c(ORCID = "0000-0003-3118-6330"))
 Description: Bundles a set of cross-trait association methods.
 License: GPL (>= 3)
-BugReports: https://github.com/slamballais/pleiotropy/issues
+BugReports: https://github.com/slamballais/ctar/issues
 Encoding: UTF-8
 LazyData: true
