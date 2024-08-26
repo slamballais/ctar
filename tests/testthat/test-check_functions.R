@@ -6,6 +6,7 @@ p_nan <- list(0.05, NaN)
 p_neg <- list(-0.05, -0.05)
 p_high <- list(2, 2)
 p_char <- list(0.05, "test")
+p_zero <- list(0.05, 0)
 
 test_that("`check_p_in` can deal with illogical values", {
   expect_error(check_p_in(p_na, 1))
@@ -14,6 +15,7 @@ test_that("`check_p_in` can deal with illogical values", {
   expect_error(check_p_in(p_neg, 1))
   expect_error(check_p_in(p_high, 1))
   expect_error(check_p_in(p_char, 1))
+  expect_error(check_p_in(p_zero, 1))
 
   expect_error(check_p_in(p_2, -1))
   expect_error(check_p_in(p_2, 2))

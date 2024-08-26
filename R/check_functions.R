@@ -18,6 +18,8 @@ check_p_in <- function(p_in, .MAXVAL) {
   if (any(l != l[1])) stop("Not all elements of `p_in` are equally long.")
   p <- do.call("cbind", p_in)
   if (any(p < 0)) stop("Negative p-values detected, which is not possible.")
+  if (any(p == 0))
+    stop("At least 1 p-value is equal to 0; please replace with a very small value.")
   if (any(p > 1)) stop("P-values larger than 1 detected, which is not possible.")
   if (.MAXVAL > 1 || .MAXVAL <= 0)
     stop("Argument `.MAXVAL` should fall in the range (0,1].")
