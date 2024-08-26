@@ -2,6 +2,7 @@
 
 export(cpma)
 export(fastorder)
+export(fct)
 export(sumrank)
 importFrom(Rcpp,sourceCpp)
 useDynLib(ctar)
