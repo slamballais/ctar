@@ -13,17 +13,19 @@
 
 sumrank <- function(p_in, fixed_names = NULL, .THRESHOLD = 5E-8, .MAXVAL = 1, .FIXED = TRUE) {
 
-  # prep p_in
-  if (!is.list(p_in)) stop("`p_in` needs to be a list.")
+  # check input arguments
+  p_in_args <- check_p_in(p_in, .MAXVAL)
+  m <- p_in_args$number_of_traits
+  l <- p_in_args$number_of_snps
+  p <- p_in_args$p_matrix
+
   if (!is.null(fixed_names) && is.null(pn <- names(p_in)))
     stop("`p_in` should be a named list; names are missing.")
-  m <- length(p_in)
-  if (m < 2) stop("`p_in` should have at least 2 elements (i.e., multiple p-value vectors).")
-  l <- sapply(p_in, length)
-  if (any(l != l[1])) stop("Not all elements of `p_in` are equally long.")
-  p <- do.call("cbind", p_in)
-  if (any(p < 0)) stop("Negative p-values detected, which is not possible.")
-  p[p > .MAXVAL] <- 1
+
+  if (!is.numeric(.THRESHOLD) || .THRESHOLD < 0 || .THRESHOLD > 1)
+    stop("Make sure `.THRESHOLD` is a number between 0 and 1")
+
+  if (!is.logical(.FIXED)) stop("`.FIXED` should be `TRUE` or `FALSE`")
 
   # prep fixed_names
   if (!is.null(fixed_names)) {
@@ -74,15 +76,12 @@ sumrank <- function(p_in, fixed_names = NULL, .THRESHOLD = 5E-8, .MAXVAL = 1, .F
       traits <- o$ix[1:nn]
     }
 
-    final_p[i] <- p_out
+    final_p[i] <- min(p_out, 1)
     final_n[i] <- n2
     final_traits[[i]] <- traits
-    final_exp[i] <- p_exp_out
-
+    final_exp[i] <- -p_exp_out / log(10)
   }
-  # convert log e to -log10
-  final_exp <- -final_exp / log(10)
 
-  final <- list(p = pmin(final_p, 1), n = final_n, traits = final_traits, p_exp = final_exp)
+  final <- list(p = final_p, n = final_n, traits = final_traits, p_exp = final_exp)
   return(final)
 }

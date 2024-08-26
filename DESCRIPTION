@@ -12,6 +12,8 @@ BugReports: https://github.com/slamballais/ctar/issues
 Encoding: UTF-8
 Imports:
     BH (>= 1.84.0),
+    doParallel (>= 1.0.17),
+    parallel,
     Rcpp (>= 1.0.13),
     RcppEigen (>= 0.3.4.0.2),
     RcppNumerical (>= 0.6)

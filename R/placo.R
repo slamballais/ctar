@@ -1,4 +1,8 @@
 placo <- function(z1, z2, var_1 = NULL, var_2 = NULL, n_cores = 1) {
+
+  check_z(z1, z2, var_1, var_2)
+  check_cores(n_cores)
+
   if (is.null(var_1)) var_1 <- sd(z1)
   if (is.null(var_2)) var_1 <- sd(z2)
   z12 <- abs(z1 * z2)

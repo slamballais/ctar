@@ -1,3 +1,8 @@
+# ctar 0.2.1
+
+## Minor tweaks
+* Added internal functions and checks for the input arguments.
+
 # ctar 0.2.0 
 
 Version 0.2.0 extends beyond SumRank and adds a number of necessary features.

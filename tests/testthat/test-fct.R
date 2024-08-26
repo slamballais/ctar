@@ -25,4 +25,21 @@ test_that("fct can deal with illogical values", {
   expect_error(fct(p_nan))
   expect_error(fct(p_neg))
   expect_error(fct(p_char))
+
+  expect_error(fct(p_2, .THRESHOLD = "test"))
+  expect_error(fct(p_2, .THRESHOLD = -1))
+  expect_error(fct(p_2, .THRESHOLD = 2))
+
+  expect_error(fct(p_2, .MAXVAL = "test"))
+  expect_error(fct(p_2, .MAXVAL = -1))
+  expect_error(fct(p_2, .MAXVAL = 2))
+})
+
+# handling extreme values
+p_0 <- list()
+p_1 <- list(0.05)
+
+test_that("fct can deal with extreme values", {
+  expect_error(fct(p_0))
+  expect_error(fct(p_1))
 })

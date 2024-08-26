@@ -27,6 +27,15 @@ test_that("SumRank can deal with illogical values", {
   expect_error(sumrank(p_nan))
   expect_error(sumrank(p_neg))
   expect_error(sumrank(p_char))
+
+  expect_error(sumrank(p_2, .THRESHOLD = "test"))
+  expect_error(sumrank(p_2, .THRESHOLD = -1))
+  expect_error(sumrank(p_2, .THRESHOLD = 2))
+
+  expect_error(sumrank(p_2, .MAXVAL = "test"))
+  expect_error(sumrank(p_2, .MAXVAL = -1))
+  expect_error(sumrank(p_2, .MAXVAL = 2))
+
 })
 
 # handling extreme values
