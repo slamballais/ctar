@@ -22,6 +22,7 @@ sumrank <- function(p_in, fixed_names = NULL, .THRESHOLD = 5E-8, .MAXVAL = 1, .F
   l <- sapply(p_in, length)
   if (any(l != l[1])) stop("Not all elements of `p_in` are equally long.")
   p <- do.call("cbind", p_in)
+  if (any(p < 0)) stop("Negative p-values detected, which is not possible.")
   p[p > .MAXVAL] <- 1
 
   # prep fixed_names
@@ -32,7 +33,7 @@ sumrank <- function(p_in, fixed_names = NULL, .THRESHOLD = 5E-8, .MAXVAL = 1, .F
     if (any(fxx <- duplicated(fn))) stop("`fixed_names` contains certain names multiple times: ", paste(unique(fn[fxx]), collapse = ", "))
   }
 
-  # run sumrank
+  # run
   loi <- 0
   final_p <- rep(NA, l[1])
   final_n <- rep(NA, l[1])
