@@ -1,12 +1,11 @@
 # ctar 0.2.1
 
 ## Minor tweaks
-* Added internal functions and checks for the input arguments.
-* Added `p_exp` (-log10 p-values) to the output of `cpma` and `fct`.
-* Added tests against the non-subset `sumrank`, `cpma`, and `fct`.
+* [#10](https://github.com/slamballais/ctar/pull/10): Added internal functions and checks for the input arguments.
+* [#11](https://github.com/slamballais/ctar/pull/11): Added `p_exp` (-log10 p-values) to the output of `cpma` and `fct`.
+* [#12](https://github.com/slamballais/ctar/pull/12): Added tests against the non-subset `sumrank`, `cpma`, and `fct`.
 
 # ctar 0.2.0 
-
 Version 0.2.0 extends beyond SumRank and adds a number of necessary features.
 
 ## New features
