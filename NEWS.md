@@ -3,6 +3,7 @@
 ## Minor tweaks
 * Added internal functions and checks for the input arguments.
 * Added `p_exp` (-log10 p-values) to the output of `cpma` and `fct`.
+* Added tests against the non-subset `sumrank`, `cpma`, and `fct`.
 
 # ctar 0.2.0 
 
