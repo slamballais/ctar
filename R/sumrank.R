@@ -1,9 +1,22 @@
+#' Run Sumrank
+#'
+#' Run Sumrank on p-values from GWAS summary stats
+#'
+#' This function allows you to run the Sumrank method given a variety of parameters.
+#'
+#' @param p_in test
+#' @param fixed_names test
+#' @param .THRESHOLD test
+#' @param .MAXVAL test
+#' @param .FIXED test
+#' @export
+
 sumrank <- function(p_in, fixed_names = NULL, .THRESHOLD = 5E-8, .MAXVAL = 1, .FIXED = TRUE) {
-  fastorder <- function(x) .Internal(qsort(x, TRUE))
 
   # prep p_in
   if (!is.list(p_in)) stop("`p_in` needs to be a list.")
-  if (is.null(pn <- names(p_in))) stop("`p_in` should be a named list; names are missing.")
+  if (!is.null(fixed_names) && is.null(pn <- names(p_in)))
+    stop("`p_in` should be a named list; names are missing.")
   m <- length(p_in)
   if (m < 2) stop("`p_in` should have at least 2 elements (i.e., multiple p-value vectors).")
   l <- sapply(p_in, length)
