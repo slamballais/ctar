@@ -5,11 +5,13 @@ p_10 <- as.list(rep(0.05, 10))
 test_that("cpma works for two p-values", {
   expect_equal(cpma(p_2)$p, 0.05798245, tolerance = 1E-5)
   expect_equal(cpma(p_2)$n, 0)
+  expect_equal(cpma(p_2)$p_exp, -log10(0.05798245), tolerance = 1E-5)
 })
 
 test_that("cpma works for ten p-values", {
   expect_equal(cpma(p_10)$p, 2.243116e-05, tolerance = 1E-5)
   expect_equal(cpma(p_10)$n, 0)
+  expect_equal(cpma(p_10)$p_exp, -log10(2.243116e-05), tolerance = 1E-5)
 })
 
 # handling exceptions

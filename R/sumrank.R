@@ -36,11 +36,9 @@ sumrank <- function(p_in, fixed_names = NULL, .THRESHOLD = 5E-8, .MAXVAL = 1, .F
   }
 
   # run
+  final <- make_final(l)
+
   loi <- 0
-  final_p <- rep(NA, l[1])
-  final_n <- rep(NA, l[1])
-  final_traits <- vector(mode = "list", length = l[1])
-  final_exp <- rep(NA, l[1])
   ms <- 1:m
   lgamma_values <- lgamma(ms + 1)
   for (i in seq_len(l[1])) {
@@ -76,12 +74,10 @@ sumrank <- function(p_in, fixed_names = NULL, .THRESHOLD = 5E-8, .MAXVAL = 1, .F
       traits <- o$ix[1:nn]
     }
 
-    final_p[i] <- min(p_out, 1)
-    final_n[i] <- n2
-    final_traits[[i]] <- traits
-    final_exp[i] <- -p_exp_out / log(10)
+    final$p[i] <- min(p_out, 1)
+    final$n[i] <- n2
+    final$traits[[i]] <- traits
+    final$p_exp[i] <- -p_exp_out / log(10)
   }
-
-  final <- list(p = final_p, n = final_n, traits = final_traits, p_exp = final_exp)
   return(final)
 }
