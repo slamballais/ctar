@@ -3,7 +3,8 @@
 Version 0.2.0 extends beyond SumRank and adds a number of necessary features.
 
 ## New features
-* Implemented PLACO.
+* Implemented PLACO ("pleiotropic analysis under composite null hypothesis").
+* Implemented CPMA ("cross-phenotype meta-analysis").
 * Implemented initial testing framework.
 
 ## Technical debt
