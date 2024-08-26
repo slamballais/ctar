@@ -1,8 +1,8 @@
-#' Run Sumrank
+#' Run SumRank
 #'
-#' Run Sumrank on p-values from GWAS summary stats
+#' Run SumRank on p-values from GWAS summary stats
 #'
-#' This function allows you to run the Sumrank method given a variety of parameters.
+#' This function allows you to run the SumRank method given a variety of parameters.
 #'
 #' @param p_in test
 #' @param fixed_names test

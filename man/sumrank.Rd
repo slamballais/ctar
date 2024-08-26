@@ -2,7 +2,7 @@
 % Please edit documentation in R/sumrank.R
 \name{sumrank}
 \alias{sumrank}
-\title{Run Sumrank}
+\title{Run SumRank}
 \usage{
 sumrank(
   p_in,
@@ -24,8 +24,8 @@ sumrank(
 \item{.FIXED}{test}
 }
 \description{
-Run Sumrank on p-values from GWAS summary stats
+Run SumRank on p-values from GWAS summary stats
 }
 \details{
-This function allows you to run the Sumrank method given a variety of parameters.
+This function allows you to run the SumRank method given a variety of parameters.
 }
