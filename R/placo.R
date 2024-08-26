@@ -1,7 +1,9 @@
-run_placo <- function(z1, z2, n_cores = 1) {
+placo <- function(z1, z2, var_1 = NULL, var_2 = NULL, n_cores = 1) {
+  if (is.null(var_1)) var_1 <- sd(z1)
+  if (is.null(var_2)) var_1 <- sd(z2)
   z12 <- abs(z1 * z2)
-  z12_s1 <- z12 / sd(z1)
-  z12_s2 <- z12 / sd(z2)
+  z12_s1 <- z12 / var_1
+  z12_s2 <- z12 / var_2
   p1 <- parallel_placo(z12_s1, n_cores)
   p2 <- parallel_placo(z12_s2, n_cores)
   p0 <- parallel_placo(z12, n_cores)
