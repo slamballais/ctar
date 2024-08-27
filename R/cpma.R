@@ -43,13 +43,13 @@ cpma <- function(p,
     an <- -log(o$x) - epsilon
     ap <- -log(o$x) + epsilon
     for (j in seq_len(m)) {
-      an_tmp <- an[1:i] * -ms[i]
-      ap_tmp <- ap[1:i] * -ms[i]
+      an_tmp <- an[1:j] * -ms[j]
+      ap_tmp <- ap[1:j] * -ms[j]
       an_exp <- exp(an_tmp)
       ap_exp <- exp(ap_tmp)
       oo_tmp <- sum(log(an_exp - ap_exp))
-      an_exp2 <- exp(-an[1:i])
-      ap_exp2 <- exp(-ap[1:i])
+      an_exp2 <- exp(-an[1:j])
+      ap_exp2 <- exp(-ap[1:j])
       ee_tmp <- sum(log(an_exp2 - ap_exp2))
       oo[j] <- oo_tmp
       ee[j] <- ee_tmp
