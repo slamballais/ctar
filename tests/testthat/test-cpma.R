@@ -45,6 +45,10 @@ test_that("cpma can deal with illogical values", {
   expect_error(cpma(p_2, maxval = "test"))
   expect_error(cpma(p_2, maxval = -1))
   expect_error(cpma(p_2, maxval = 2))
+
+  expect_error(cpma(p_2, fixed = "test"))
+  expect_error(cpma(p_2, fixed = -1))
+  expect_error(cpma(p_2, fixed = 2))
 })
 
 # handling extreme values

@@ -42,6 +42,30 @@ test_that("sumrank can deal with illogical values", {
   expect_error(sumrank(p_2, maxval = -1))
   expect_error(sumrank(p_2, maxval = 2))
 
+  expect_error(sumrank(p_2, fixed = "test"))
+  expect_error(sumrank(p_2, fixed = -1))
+  expect_error(sumrank(p_2, fixed = 2))
+
+})
+
+# working with fixed names
+p_2 <- list(0.05, 0.05)
+pn_2 <- list(dep = 0.05, anx = 0.05, scz = 0.05)
+
+test_that("sumrank handles fixed names", {
+  expect_error(sumrank(p_2, fixed_names = "test"))
+  expect_error(sumrank(pn_2, fixed_names = "dep"))
+  expect_equal(sumrank(pn_2, fixed_names = list("dep"))$n, 1)
+  expect_equal(sumrank(pn_2, fixed_names = list("dep", "scz"))$n, 2)
+  expect_equal(sumrank(pn_2, fixed_names = list(c("dep", "scz")))$n, 1)
+
+  expect_error(sumrank(p_na))
+  expect_error(sumrank(p_null))
+  expect_error(sumrank(p_nan))
+  expect_error(sumrank(p_neg))
+  expect_error(sumrank(p_char))
+
+
 })
 
 # handling extreme values

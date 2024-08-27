@@ -30,11 +30,11 @@ check_p <- function(p, maxval, two_traits = FALSE) {
   return(out)
 }
 
-check_z <- function(z, z_var, two_traits = FALSE) {
+check_z <- function(z, z_var = NULL, two_traits = FALSE) {
   if (!is.list(z)) stop("`z` needs to be a list.")
   m <- length(z)
   if (two_traits && m != 2) stop("`z` should have 2 elements (i.e., two z-value vectors")
-  if (m < 2) stop("`z` should have at least 2 elements (i.e., multiple z-value vectors).")
+  if (m < 2) stop("`z` should have at least 2 elements (i.e., multiple z-value vectors)")
   if (any(!sapply(z, is.numeric))) stop("all values of `z` should be numeric")
   if (any(sapply(z, function(x) any(is.na(x))))) stop("NAs found in z")
   if (any(sapply(z, function(x) any(is.nan(x))))) stop("NaNs found in z")
@@ -42,7 +42,8 @@ check_z <- function(z, z_var, two_traits = FALSE) {
   l <- sapply(z, length)
   if (any(l != l[1])) stop("Not all elements of `z` are equally long.")
 
-
+  if (is.null(z_var) && (l[1] == 1))
+    stop("Only 1 variant supplied, but no `z_var` specified")
   if (!is.null(z_var)) {
     if (!is.numeric(z_var)) stop("`z_var` needs to be a numeric vector.")
     if (length(z_var) != m) stop("`z_var` should be as long as the number of traits")

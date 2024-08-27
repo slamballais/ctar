@@ -67,6 +67,7 @@ test_that("`check_z` can deal with illogical values", {
   expect_error(check_z(z_toomany, v_2))
   expect_error(check_z(z_vec, v_2))
 
+  expect_error(check_z(z_2))
   expect_error(check_z(z_2, v_na))
   expect_error(check_z(z_2, v_nan))
   expect_error(check_z(z_2, v_null))
