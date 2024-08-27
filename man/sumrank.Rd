@@ -21,5 +21,6 @@ sumrank(p, fixed_names = NULL, p_threshold = 5e-08, maxval = 1, fixed = TRUE)
 Run SumRank on p-values from GWAS summary stats
 }
 \details{
-This function allows you to run the SumRank method given a variety of parameters.
+This function allows you to run the SumRank method
+given a variety of parameters.
 }

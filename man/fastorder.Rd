@@ -13,5 +13,6 @@ fastorder(x)
 A list with two elements: "x" and "ix".
 }
 \description{
-This function sorts a numeric vector of positive floats and returns the sorted values and their original indices.
+This function sorts a numeric vector of positive floats and
+returns the sorted values and their original indices.
 }
