@@ -1,3 +1,19 @@
+#' @name check_functions_from_ctar
+#' @rdname check_functions_from_ctar
+#'
+#' @title check_functions from ctar
+#'
+#' @param n_cores test
+#' @param p test
+#' @param maxval test
+#' @param two_traits test
+#' @param z test
+#' @param z_var test
+NULL
+
+#' @rdname check_functions_from_ctar
+#' @export
+
 check_cores <- function(n_cores) {
   if (!is.numeric(n_cores)) stop("`n_cores` should be a number")
   if (is.na(n_cores)) stop("`n_cores` is NA")
@@ -6,7 +22,11 @@ check_cores <- function(n_cores) {
   if (n_cores < 1) stop("`n_cores` should be at least 1")
   mc <- parallel::detectCores()
   if (n_cores > mc) stop(mc, " cores detected, `n_cores` should be lower")
+  invisible()
 }
+
+#' @rdname check_functions_from_ctar
+#' @export
 
 check_p <- function(p, maxval, two_traits = FALSE) {
   if (!is.list(p)) stop("`p` needs to be a list.")
@@ -28,6 +48,9 @@ check_p <- function(p, maxval, two_traits = FALSE) {
               p_matrix = p)
   return(out)
 }
+
+#' @rdname check_functions_from_ctar
+#' @export
 
 check_z <- function(z, z_var = NULL, two_traits = FALSE) {
   if (!is.list(z)) stop("`z` needs to be a list.")
