@@ -69,8 +69,8 @@ sumrank <- function(p,
 
     # this prevents a single trait with a very low p-value being
     # lower than the fixed names set
-    n <- if {
-      (!is.null(fixed_names)) pmax(which.min(p2[loi:m]) + loi - 1, loi)
+    n <- if (!is.null(fixed_names)) {
+      pmax(which.min(p2[loi:m]) + loi - 1, loi)
       } else {
         which.min(p2)
       }
