@@ -36,12 +36,12 @@ sumrank <- function(p,
   if (!is.null(fixed_names)) {
     if (!is.list(fixed_names))
       stop("`fixed_names` needs to be a list, with every element ",
-      "representing a set of names from which at least 1 name must ",
-      "be included in the final result.")
+           "representing a set of names from which at least 1 name must ",
+           "be included in the final result.")
     fn <- unlist(fixed_names)
     if (any(fxx <- !fn %in% pn))
       stop("`fixed_names` contains names that are not found in ",
-      "the names of `p`: ", paste(fn[fxx], collapse = ", "))
+           "the names of `p`: ", paste(fn[fxx], collapse = ", "))
     if (any(fxx <- duplicated(fn)))
       stop("`fixed_names` contains certain names multiple times: ",
            paste(unique(fn[fxx]), collapse = ", "))

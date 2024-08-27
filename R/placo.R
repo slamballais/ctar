@@ -45,7 +45,7 @@ parallel_placo <- function(zz, n_cores) {
 }
 
 integrate_bessel <- function(x) {
-  integrate(function(y) besselK(x = abs(y), nu = 0)/pi,
+  integrate(function(y) besselK(x = abs(y), nu = 0) / pi,
             x,
             Inf,
             abs.tol = .Machine$double.eps)$value
