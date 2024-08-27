@@ -8,3 +8,7 @@ test_that("fastorder is identical to sort", {
   expect_equal(sort(x, index.return = TRUE), fastorder(x))
   expect_equal(sort(x2_short, index.return = TRUE), fastorder(x2_short))
 })
+
+test_that("fastorder can handle some errors", {
+  expect_error(fastorder("test"))
+})
