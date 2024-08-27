@@ -39,11 +39,14 @@ parallel_placo <- function(zz, n_cores) {
     on.exit(parallel::stopCluster(cl))
     parallel::clusterExport(cl, "besselK")
     out <- 2 *
-      parallel::parSapply(cl, zz, integrate_bessel,
-                          fun = function(x) besselK(x = abs(x), nu = 0)/pi)
+      parallel::parSapply(cl, zz, integrate_bessel)
   }
   return(out)
 }
 
-integrate_bessel <- function(x, fun)
-  integrate(fun, x, Inf, abs.tol = .Machine$double.eps)$value
+integrate_bessel <- function(x) {
+  integrate(function(y) besselK(x = abs(y), nu = 0)/pi,
+            x,
+            Inf,
+            abs.tol = .Machine$double.eps)$value
+}
