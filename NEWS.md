@@ -9,6 +9,7 @@
 * [098a69f](https://github.com/slamballais/ctar/commit/098a69f39bf7cbb02bdb410a1672e8356cddd089): Updated looks of `NEWS.md`. 
 * [#24](https://github.com/slamballais/ctar/pull/24): Added `codecov` checks.
 * [832cf03](https://github.com/slamballais/ctar/commit/832cf03e009983473a076f7830354f093e4211b8): Added a GitHub Actions for PR commands.
+* [](): Modified argument names to fit `lintr` (e.g., `.MAXVAL` to `maxval`).
 
 # ctar 0.2.1 (2024-08-27)
 

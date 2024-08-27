@@ -6,15 +6,15 @@
 #'
 #' @param p test
 #' @param fixed_names test
-#' @param .THRESHOLD test
-#' @param .MAXVAL test
-#' @param .FIXED test
+#' @param p_threshold test
+#' @param maxval test
+#' @param fixed test
 #' @export
 
-sumrank <- function(p, fixed_names = NULL, .THRESHOLD = 5E-8, .MAXVAL = 1, .FIXED = TRUE) {
+sumrank <- function(p, fixed_names = NULL, p_threshold = 5E-8, maxval = 1, fixed = TRUE) {
 
   # check input arguments
-  p_args <- check_p(p, .MAXVAL)
+  p_args <- check_p(p, maxval)
   m <- p_args$number_of_traits
   l <- p_args$number_of_snps
   pm <- p_args$p_matrix
@@ -22,10 +22,10 @@ sumrank <- function(p, fixed_names = NULL, .THRESHOLD = 5E-8, .MAXVAL = 1, .FIXE
   if (!is.null(fixed_names) && is.null(pn <- names(p)))
     stop("`p` should be a named list; names are missing.")
 
-  if (!is.numeric(.THRESHOLD) || .THRESHOLD < 0 || .THRESHOLD > 1)
-    stop("Make sure `.THRESHOLD` is a number between 0 and 1")
+  if (!is.numeric(p_threshold) || p_threshold < 0 || p_threshold > 1)
+    stop("Make sure `p_threshold` is a number between 0 and 1")
 
-  if (!is.logical(.FIXED)) stop("`.FIXED` should be `TRUE` or `FALSE`")
+  if (!is.logical(fixed)) stop("`fixed` should be `TRUE` or `FALSE`")
 
   # prep fixed_names
   if (!is.null(fixed_names)) {
@@ -58,15 +58,15 @@ sumrank <- function(p, fixed_names = NULL, .THRESHOLD = 5E-8, .MAXVAL = 1, .FIXE
     n <- if (!is.null(fixed_names)) pmax(which.min(p2[loi:m]) + loi - 1, loi) else which.min(p2)
     p_out <- p2[n]
     p_exp_out <- p_exp[n]
-    n2 <- if (p_out < .THRESHOLD) n else 0
+    n2 <- if (p_out < p_threshold) n else 0
     traits <- o$ix[seq_len(n2)]
     oo <- if (!is.null(fixed_names)) o$x[(loi + 1):m] else o$x
-    nn <- sum(oo < .THRESHOLD) + loi
+    nn <- sum(oo < p_threshold) + loi
 
-    # this makes sure that any p-value below .THRESHOLD is included in the final set;
+    # this makes sure that any p-value below p_threshold is included in the final set;
     # this was introduced to prevent weird scenarios where subsets would be more significant
     # than adding those subthreshold p-values as well
-    if (.FIXED && nn > n2) {
+    if (fixed && nn > n2) {
       n2 <- nn
       p_out <- p2[nn]
       p_exp_out <- p_exp[nn]

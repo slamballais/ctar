@@ -10,7 +10,7 @@ check_cores <- function(n_cores) {
   if (n_cores > mc) stop(mc, " cores detected, `n_cores` should be lower")
 }
 
-check_p <- function(p, .MAXVAL, two_traits = FALSE) {
+check_p <- function(p, maxval, two_traits = FALSE) {
   if (!is.list(p)) stop("`p` needs to be a list.")
   m <- length(p)
   if (m < 2) stop("`p` should have at least 2 elements (i.e., multiple p-value vectors).")
@@ -21,9 +21,9 @@ check_p <- function(p, .MAXVAL, two_traits = FALSE) {
   if (any(p == 0))
     stop("At least 1 p-value is equal to 0; please replace with a very small value.")
   if (any(p > 1)) stop("P-values larger than 1 detected, which is not possible.")
-  if (.MAXVAL > 1 || .MAXVAL <= 0)
-    stop("Argument `.MAXVAL` should fall in the range (0,1].")
-  p[p > .MAXVAL] <- 1
+  if (maxval > 1 || maxval <= 0)
+    stop("Argument `maxval` should fall in the range (0,1].")
+  p[p > maxval] <- 1
   out <- list(number_of_traits = m,
               number_of_snps = l,
               p_matrix = p)
