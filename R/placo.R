@@ -37,13 +37,13 @@ parallel_placo <- function(zz, n_cores) {
     cl <- parallel::makeCluster(n_cores)
     doParallel::registerDoParallel(cl)
     on.exit(parallel::stopCluster(cl))
-    parallel::clusterExport(cl, "pdfx")
-    out <- 2 * parallel::parSapply(cl, zz, integrate_bessel)
+    parallel::clusterExport(cl, "besselK")
+    out <- 2 *
+      parallel::parSapply(cl, zz, integrate_bessel,
+                          fun = function(x) besselK(x = abs(x), nu = 0)/pi)
   }
   return(out)
 }
 
-pdfx <- function(x) besselK(x = abs(x), nu = 0)/pi
-
-integrate_bessel <- function(x)
-  integrate(pdfx, x, Inf, abs.tol = .Machine$double.eps)$value
+integrate_bessel <- function(x, fun)
+  integrate(fun, x, Inf, abs.tol = .Machine$double.eps)$value
