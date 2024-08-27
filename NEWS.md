@@ -5,6 +5,7 @@
 * [#11](https://github.com/slamballais/ctar/pull/11): Added `p_exp` (-log10 p-values) to the output of `cpma` and `fct`.
 * [#12](https://github.com/slamballais/ctar/pull/12): Added tests against the non-subset `sumrank`, `cpma`, and `fct`.
 * [b9c3e56](https://github.com/slamballais/ctar/commit/b9c3e56775919bafd1c7a8ccf677e5fe011fd204): Added tests to see if p-values are equal to 0.
+* Modified `z_in` to `z`, and `p_in` to `p`. Added checks for `z`.
 
 # ctar 0.2.0 
 Version 0.2.0 extends beyond SumRank and adds a number of necessary features.

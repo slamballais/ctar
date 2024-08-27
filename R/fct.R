@@ -5,20 +5,20 @@
 #' This function allows you to run the Fisher's combined probability test (FCT)
 #' given a variety of parameters.
 #'
-#' @param p_in test
+#' @param p test
 #' @param epsilon test
 #' @param .THRESHOLD test
 #' @param .MAXVAL test
 #' @param .FIXED test
 #' @export
 
-fct <- function(p_in, .THRESHOLD = 5E-8, .MAXVAL = 1, .FIXED = TRUE) {
+fct <- function(p, .THRESHOLD = 5E-8, .MAXVAL = 1, .FIXED = TRUE) {
 
   # check input arguments
-  p_in_args <- check_p_in(p_in, .MAXVAL)
-  m <- p_in_args$number_of_traits
-  l <- p_in_args$number_of_snps
-  p <- p_in_args$p_matrix
+  p_args <- check_p(p, .MAXVAL)
+  m <- p_args$number_of_traits
+  l <- p_args$number_of_snps
+  pm <- p_args$p_matrix
 
   if (!is.numeric(.THRESHOLD) || .THRESHOLD < 0 || .THRESHOLD > 1)
     stop("Make sure `.THRESHOLD` is a number between 0 and 1")
@@ -29,7 +29,7 @@ fct <- function(p_in, .THRESHOLD = 5E-8, .MAXVAL = 1, .FIXED = TRUE) {
   final <- make_final(l)
 
   for (i in seq_len(l[1])) {
-    x <- p[i, ]
+    x <- pm[i, ]
     o <- fastorder(x)
     p2 <- pchisq(cumsum(log(o$x)) * -2, df = 1:m * 2, lower.tail = FALSE)
     p3 <- min(p2)

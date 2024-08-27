@@ -4,10 +4,10 @@
 \alias{fct}
 \title{Run FCT}
 \usage{
-fct(p_in, .THRESHOLD = 5e-08, .MAXVAL = 1, .FIXED = TRUE)
+fct(p, .THRESHOLD = 5e-08, .MAXVAL = 1, .FIXED = TRUE)
 }
 \arguments{
-\item{p_in}{test}
+\item{p}{test}
 
 \item{.THRESHOLD}{test}
 

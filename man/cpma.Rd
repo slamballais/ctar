@@ -4,10 +4,10 @@
 \alias{cpma}
 \title{Run CPMA}
 \usage{
-cpma(p_in, epsilon = 0.001, .THRESHOLD = 5e-08, .MAXVAL = 1, .FIXED = TRUE)
+cpma(p, epsilon = 0.001, .THRESHOLD = 5e-08, .MAXVAL = 1, .FIXED = TRUE)
 }
 \arguments{
-\item{p_in}{test}
+\item{p}{test}
 
 \item{epsilon}{test}
 
