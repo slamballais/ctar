@@ -10,9 +10,14 @@
 #' @param .THRESHOLD test
 #' @param .MAXVAL test
 #' @param .FIXED test
+#' @importFrom stats pchisq
 #' @export
 
-cpma <- function(p, epsilon = 0.001, .THRESHOLD = 5E-8, .MAXVAL = 1, .FIXED = TRUE) {
+cpma <- function(p,
+                 epsilon = 0.001,
+                 .THRESHOLD = 5E-8,
+                 .MAXVAL = 1,
+                 .FIXED = TRUE) {
 
   # check input arguments
   p_args <- check_p(p, .MAXVAL)
