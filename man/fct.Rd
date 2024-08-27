@@ -4,16 +4,16 @@
 \alias{fct}
 \title{Run FCT}
 \usage{
-fct(p, .THRESHOLD = 5e-08, .MAXVAL = 1, .FIXED = TRUE)
+fct(p, p_threshold = 5e-08, maxval = 1, fixed = TRUE)
 }
 \arguments{
 \item{p}{test}
 
-\item{.THRESHOLD}{test}
+\item{p_threshold}{test}
 
-\item{.MAXVAL}{test}
+\item{maxval}{test}
 
-\item{.FIXED}{test}
+\item{fixed}{test}
 }
 \description{
 Run FCT on p-values from GWAS summary stats
