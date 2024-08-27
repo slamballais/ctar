@@ -4,22 +4,23 @@
 \alias{sumrank}
 \title{Run SumRank}
 \usage{
-sumrank(p, fixed_names = NULL, .THRESHOLD = 5e-08, .MAXVAL = 1, .FIXED = TRUE)
+sumrank(p, fixed_names = NULL, p_threshold = 5e-08, maxval = 1, fixed = TRUE)
 }
 \arguments{
 \item{p}{test}
 
 \item{fixed_names}{test}
 
-\item{.THRESHOLD}{test}
+\item{p_threshold}{test}
 
-\item{.MAXVAL}{test}
+\item{maxval}{test}
 
-\item{.FIXED}{test}
+\item{fixed}{test}
 }
 \description{
 Run SumRank on p-values from GWAS summary stats
 }
 \details{
-This function allows you to run the SumRank method given a variety of parameters.
+This function allows you to run the SumRank method
+given a variety of parameters.
 }

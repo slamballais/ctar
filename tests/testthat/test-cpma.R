@@ -20,6 +20,11 @@ test_that("cpma works the same as non-subset cpma", {
   expect_equal(cpma(p_ns)$p, do.call("p_cpma", p_ns))
 })
 
+test_that("the fixed argument works", {
+  expect_equal(cpma(list(0.99, 5E-8), p_threshold = 1)$n, 2)
+  expect_equal(cpma(list(0.99, 5E-8), p_threshold = 1, fixed = FALSE)$n, 1)
+})
+
 # handling exceptions
 p_na <- list(0.05, NA)
 p_null <- list(0.05, NULL)
@@ -38,13 +43,17 @@ test_that("cpma can deal with illogical values", {
   expect_error(cpma(p_2, epsilon = -1))
   expect_error(cpma(p_2, epsilon = 2))
 
-  expect_error(cpma(p_2, .THRESHOLD = "test"))
-  expect_error(cpma(p_2, .THRESHOLD = -1))
-  expect_error(cpma(p_2, .THRESHOLD = 2))
+  expect_error(cpma(p_2, p_threshold = "test"))
+  expect_error(cpma(p_2, p_threshold = -1))
+  expect_error(cpma(p_2, p_threshold = 2))
 
-  expect_error(cpma(p_2, .MAXVAL = "test"))
-  expect_error(cpma(p_2, .MAXVAL = -1))
-  expect_error(cpma(p_2, .MAXVAL = 2))
+  expect_error(cpma(p_2, maxval = "test"))
+  expect_error(cpma(p_2, maxval = -1))
+  expect_error(cpma(p_2, maxval = 2))
+
+  expect_error(cpma(p_2, fixed = "test"))
+  expect_error(cpma(p_2, fixed = -1))
+  expect_error(cpma(p_2, fixed = 2))
 })
 
 # handling extreme values

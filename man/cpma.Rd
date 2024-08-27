@@ -4,18 +4,18 @@
 \alias{cpma}
 \title{Run CPMA}
 \usage{
-cpma(p, epsilon = 0.001, .THRESHOLD = 5e-08, .MAXVAL = 1, .FIXED = TRUE)
+cpma(p, epsilon = 0.001, p_threshold = 5e-08, maxval = 1, fixed = TRUE)
 }
 \arguments{
 \item{p}{test}
 
 \item{epsilon}{test}
 
-\item{.THRESHOLD}{test}
+\item{p_threshold}{test}
 
-\item{.MAXVAL}{test}
+\item{maxval}{test}
 
-\item{.FIXED}{test}
+\item{fixed}{test}
 }
 \description{
 Run CPMA on p-values from GWAS summary stats

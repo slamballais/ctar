@@ -1,5 +1,6 @@
 # default behavior
 v_2 <- c(1, 1)
+z_t <- list(c(2, 3), c(2, 3))
 
 test_that("placo works for two z values", {
   expect_equal(placo(list(2, 2),     v_2), 0.0064596, tolerance = 1E-5)
@@ -7,6 +8,9 @@ test_that("placo works for two z values", {
   expect_equal(placo(list(0, 0),     v_2), 0.99999, tolerance = 1E-5)
   expect_equal(placo(list(10, 10),   v_2), 2.949898e-45)
   expect_equal(placo(list(100, 100), v_2), 0)
+
+  expect_equal(placo(z_t)[1], -4.322276e-03, tolerance = 1E-5)
+  expect_equal(placo(list(2, 2), v_2, n_cores = 2), 0.0064596, tolerance = 1E-5)
 })
 
 # handling exceptions
