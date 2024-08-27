@@ -4,45 +4,44 @@
 #'
 #' This function allows you to run the SumRank method given a variety of parameters.
 #'
-#' @param p_in test
+#' @param p test
 #' @param fixed_names test
 #' @param .THRESHOLD test
 #' @param .MAXVAL test
 #' @param .FIXED test
 #' @export
 
-sumrank <- function(p_in, fixed_names = NULL, .THRESHOLD = 5E-8, .MAXVAL = 1, .FIXED = TRUE) {
+sumrank <- function(p, fixed_names = NULL, .THRESHOLD = 5E-8, .MAXVAL = 1, .FIXED = TRUE) {
 
-  # prep p_in
-  if (!is.list(p_in)) stop("`p_in` needs to be a list.")
-  if (!is.null(fixed_names) && is.null(pn <- names(p_in)))
-    stop("`p_in` should be a named list; names are missing.")
-  m <- length(p_in)
-  if (m < 2) stop("`p_in` should have at least 2 elements (i.e., multiple p-value vectors).")
-  l <- sapply(p_in, length)
-  if (any(l != l[1])) stop("Not all elements of `p_in` are equally long.")
-  p <- do.call("cbind", p_in)
-  if (any(p < 0)) stop("Negative p-values detected, which is not possible.")
-  p[p > .MAXVAL] <- 1
+  # check input arguments
+  p_args <- check_p(p, .MAXVAL)
+  m <- p_args$number_of_traits
+  l <- p_args$number_of_snps
+  pm <- p_args$p_matrix
+
+  if (!is.null(fixed_names) && is.null(pn <- names(p)))
+    stop("`p` should be a named list; names are missing.")
+
+  if (!is.numeric(.THRESHOLD) || .THRESHOLD < 0 || .THRESHOLD > 1)
+    stop("Make sure `.THRESHOLD` is a number between 0 and 1")
+
+  if (!is.logical(.FIXED)) stop("`.FIXED` should be `TRUE` or `FALSE`")
 
   # prep fixed_names
   if (!is.null(fixed_names)) {
     if (!is.list(fixed_names)) stop("`fixed_names` needs to be a list, with every element representing a set of names from which at least 1 name must be included in the final result.")
     fn <- unlist(fixed_names)
-    if (any(fxx <- !fn %in% pn)) stop("`fixed_names` contains names that are not found in the names of `p_in`: ", paste(fn[fxx], collapse = ", "))
+    if (any(fxx <- !fn %in% pn)) stop("`fixed_names` contains names that are not found in the names of `p`: ", paste(fn[fxx], collapse = ", "))
     if (any(fxx <- duplicated(fn))) stop("`fixed_names` contains certain names multiple times: ", paste(unique(fn[fxx]), collapse = ", "))
   }
 
   # run
+  final <- make_final(l)
   loi <- 0
-  final_p <- rep(NA, l[1])
-  final_n <- rep(NA, l[1])
-  final_traits <- vector(mode = "list", length = l[1])
-  final_exp <- rep(NA, l[1])
   ms <- 1:m
   lgamma_values <- lgamma(ms + 1)
   for (i in seq_len(l[1])) {
-    x <- p[i, ]
+    x <- pm[i, ]
 
     o <- fastorder(x)
     if (!is.null(fixed_names)) {
@@ -74,15 +73,10 @@ sumrank <- function(p_in, fixed_names = NULL, .THRESHOLD = 5E-8, .MAXVAL = 1, .F
       traits <- o$ix[1:nn]
     }
 
-    final_p[i] <- p_out
-    final_n[i] <- n2
-    final_traits[[i]] <- traits
-    final_exp[i] <- p_exp_out
-
+    final$p[i] <- min(p_out, 1)
+    final$n[i] <- n2
+    final$traits[[i]] <- traits
+    final$p_exp[i] <- -p_exp_out / log(10)
   }
-  # convert log e to -log10
-  final_exp <- -final_exp / log(10)
-
-  final <- list(p = pmin(final_p, 1), n = final_n, traits = final_traits, p_exp = final_exp)
   return(final)
 }

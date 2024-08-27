@@ -4,16 +4,10 @@
 \alias{sumrank}
 \title{Run SumRank}
 \usage{
-sumrank(
-  p_in,
-  fixed_names = NULL,
-  .THRESHOLD = 5e-08,
-  .MAXVAL = 1,
-  .FIXED = TRUE
-)
+sumrank(p, fixed_names = NULL, .THRESHOLD = 5e-08, .MAXVAL = 1, .FIXED = TRUE)
 }
 \arguments{
-\item{p_in}{test}
+\item{p}{test}
 
 \item{fixed_names}{test}
 

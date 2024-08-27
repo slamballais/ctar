@@ -1,9 +1,17 @@
-placo <- function(z1, z2, var_1 = NULL, var_2 = NULL, n_cores = 1) {
-  if (is.null(var_1)) var_1 <- sd(z1)
-  if (is.null(var_2)) var_1 <- sd(z2)
-  z12 <- abs(z1 * z2)
-  z12_s1 <- z12 / var_1
-  z12_s2 <- z12 / var_2
+
+## Code heavily borrowed from Debashree Ray and Nilanjan Chatterjee
+## https://github.com/RayDebashree/PLACO
+## https://doi.org/10.1371/journal.pgen.1009218
+
+placo <- function(z, z_var = NULL, n_cores = 1) {
+
+  check_z(z, z_var)
+  check_cores(n_cores)
+
+  if (is.null(z_var)) z_var <- c(sd(z1), sd(z2))
+  z12 <- abs(z[[1]] * z[[2]])
+  z12_s1 <- z12 / z_var[1]
+  z12_s2 <- z12 / z_var[2]
   p1 <- parallel_placo(z12_s1, n_cores)
   p2 <- parallel_placo(z12_s2, n_cores)
   p0 <- parallel_placo(z12, n_cores)
