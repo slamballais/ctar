@@ -8,7 +8,7 @@
 * [23d7741](https://github.com/slamballais/ctar/commit/23d774154d7ccae381ba2208e10edcf76ac9081c): Add `R CMD CHECK` badge for GitHub.
 * [098a69f](https://github.com/slamballais/ctar/commit/098a69f39bf7cbb02bdb410a1672e8356cddd089): Updated looks of `NEWS.md`. 
 * [#24](https://github.com/slamballais/ctar/pull/24): Added `codecov` checks.
-* [](): Added a GitHub Actions for PR commands.
+* [832cf03](https://github.com/slamballais/ctar/commit/832cf03e009983473a076f7830354f093e4211b8): Added a GitHub Actions for PR commands.
 
 # ctar 0.2.1 (2024-08-27)
 
