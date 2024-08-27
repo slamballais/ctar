@@ -1,10 +1,12 @@
 # ctar 0.2.2 (2024-08-27)
 
 ### Bug fixes
-* [](): Removed unnecessary values in `Imports` field.
-* [](): Make sure that `R CMD CHECK` is passed successfully.
-* [](): Add `R CMD CHECK` badge for GitHub.
-* [](): Updated looks of `NEWS.md`. 
+* [8f7a2cd](https://github.com/slamballais/ctar/commit/8f7a2cd301f5b81ef1c8bdd24edb5572a467ce07): Removed unnecessary values in `Imports` field.
+* [0c21c9b](https://github.com/slamballais/ctar/commit/0c21c9b682b75c496a560930a5551e22dd6312ca): Make sure that `R CMD CHECK` is passed successfully.
+
+### Minor tweaks
+* [23d7741](https://github.com/slamballais/ctar/commit/23d774154d7ccae381ba2208e10edcf76ac9081c): Add `R CMD CHECK` badge for GitHub.
+* [098a69f](https://github.com/slamballais/ctar/commit/098a69f39bf7cbb02bdb410a1672e8356cddd089): Updated looks of `NEWS.md`. 
 
 # ctar 0.2.1 (2024-08-27)
 
