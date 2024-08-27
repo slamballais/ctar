@@ -6,13 +6,16 @@
 #' given a variety of parameters.
 #'
 #' @param p test
-#' @param epsilon test
 #' @param .THRESHOLD test
 #' @param .MAXVAL test
 #' @param .FIXED test
+#' @importFrom stats pchisq
 #' @export
 
-fct <- function(p, .THRESHOLD = 5E-8, .MAXVAL = 1, .FIXED = TRUE) {
+fct <- function(p,
+                .THRESHOLD = 5E-8,
+                .MAXVAL = 1,
+                .FIXED = TRUE) {
 
   # check input arguments
   p_args <- check_p(p, .MAXVAL)

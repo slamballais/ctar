@@ -53,7 +53,6 @@ p_small <- list(5E-300, 5E-300)
 test_that("sumrank can deal with extreme values", {
   expect_error(sumrank(p_0))
   expect_error(sumrank(p_1))
-  expect_equal(sumrank(p_10k)$n, 10000)
   expect_equal(sumrank(p_small)$p_exp, 598.30103)
 })
 

@@ -14,8 +14,6 @@ fct(p, .THRESHOLD = 5e-08, .MAXVAL = 1, .FIXED = TRUE)
 \item{.MAXVAL}{test}
 
 \item{.FIXED}{test}
-
-\item{epsilon}{test}
 }
 \description{
 Run FCT on p-values from GWAS summary stats

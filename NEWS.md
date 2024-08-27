@@ -2,6 +2,8 @@
 
 ## Bug fixes
 * [](): Removed unnecessary values in `Imports` field.
+* [](): Make sure that `R CMD CHECK` is passed successfully.
+* [](): Add `R CMD CHECK` badge for GitHub.
 
 # ctar 0.2.1
 
