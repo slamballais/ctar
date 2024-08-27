@@ -1,5 +1,6 @@
 # check_p: handling exceptions
 p_2 <- list(0.05, 0.05)
+p_vec <- c(0.05, 0.05)
 p_na <- list(0.05, NA)
 p_null <- list(0.05, NULL)
 p_nan <- list(0.05, NaN)
@@ -9,6 +10,7 @@ p_char <- list(0.05, "test")
 p_zero <- list(0.05, 0)
 
 test_that("`check_p` can deal with illogical values", {
+  expect_error(check_p(p_vec, 1))
   expect_error(check_p(p_na, 1))
   expect_error(check_p(p_null, 1))
   expect_error(check_p(p_nan, 1))
@@ -30,6 +32,7 @@ test_that("`check_cores` can deal with illogical values", {
   expect_error(check_cores(-5))
   expect_error(check_cores(0))
   expect_error(check_cores(1.1))
+  expect_error(check_cores(10000000))
   expect_error(check_cores(Inf))
 })
 
@@ -52,6 +55,7 @@ v_char <- c(1, "test")
 v_toofew <- c(1)
 v_toomany <- c(1, 2, 3)
 v_list <- list(1, 2)
+v_neg <- c(-1, -1)
 
 test_that("`check_z` can pass the check when needed", {
   expect_equal(check_z(z_2, v_2), invisible())
@@ -59,6 +63,8 @@ test_that("`check_z` can pass the check when needed", {
 })
 
 test_that("`check_z` can deal with illogical values", {
+  expect_error(check_z(list(1), v_2, two_traits = TRUE))
+  expect_error(check_z(list(1, c(1,2)), v_2))
   expect_error(check_z(z_na, v_2))
   expect_error(check_z(z_nan, v_2))
   expect_error(check_z(z_null, v_2))
@@ -75,4 +81,5 @@ test_that("`check_z` can deal with illogical values", {
   expect_error(check_z(z_2, v_toofew))
   expect_error(check_z(z_2, v_toomany))
   expect_error(check_z(z_2, v_list))
+  expect_error(check_z(z_2, v_neg))
 })
