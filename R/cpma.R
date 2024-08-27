@@ -41,7 +41,8 @@ cpma <- function(p,
     ms <- 1 / (cumsum(-log(o$x)) / 1:m)
     an <- -log(o$x) - epsilon
     ap <- -log(o$x) + epsilon
-    oo <- sapply(1:m, function(i) sum(log(exp(an[1:i] * -ms[i]) - exp(ap[1:i] * -ms[i]))))
+    oo <- sapply(1:m, function(i)
+      sum(log(exp(an[1:i] * -ms[i]) - exp(ap[1:i] * -ms[i]))))
     ee <- sapply(1:m, function(i) sum(log(exp(-an[1:i]) - exp(-ap[1:i]))))
     p2 <- pchisq(abs(oo - ee) * 2, 1, lower.tail = FALSE)
     p3 <- min(p2)

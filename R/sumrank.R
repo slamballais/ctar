@@ -2,7 +2,8 @@
 #'
 #' Run SumRank on p-values from GWAS summary stats
 #'
-#' This function allows you to run the SumRank method given a variety of parameters.
+#' This function allows you to run the SumRank method
+#' given a variety of parameters.
 #'
 #' @param p test
 #' @param fixed_names test
@@ -11,7 +12,11 @@
 #' @param fixed test
 #' @export
 
-sumrank <- function(p, fixed_names = NULL, p_threshold = 5E-8, maxval = 1, fixed = TRUE) {
+sumrank <- function(p,
+                    fixed_names = NULL,
+                    p_threshold = 5E-8,
+                    maxval = 1,
+                    fixed = TRUE) {
 
   # check input arguments
   p_args <- check_p(p, maxval)
@@ -29,10 +34,17 @@ sumrank <- function(p, fixed_names = NULL, p_threshold = 5E-8, maxval = 1, fixed
 
   # prep fixed_names
   if (!is.null(fixed_names)) {
-    if (!is.list(fixed_names)) stop("`fixed_names` needs to be a list, with every element representing a set of names from which at least 1 name must be included in the final result.")
+    if (!is.list(fixed_names))
+      stop("`fixed_names` needs to be a list, with every element ",
+      "representing a set of names from which at least 1 name must ",
+      "be included in the final result.")
     fn <- unlist(fixed_names)
-    if (any(fxx <- !fn %in% pn)) stop("`fixed_names` contains names that are not found in the names of `p`: ", paste(fn[fxx], collapse = ", "))
-    if (any(fxx <- duplicated(fn))) stop("`fixed_names` contains certain names multiple times: ", paste(unique(fn[fxx]), collapse = ", "))
+    if (any(fxx <- !fn %in% pn))
+      stop("`fixed_names` contains names that are not found in ",
+      "the names of `p`: ", paste(fn[fxx], collapse = ", "))
+    if (any(fxx <- duplicated(fn)))
+      stop("`fixed_names` contains certain names multiple times: ",
+           paste(unique(fn[fxx]), collapse = ", "))
   }
 
   # run
@@ -46,7 +58,8 @@ sumrank <- function(p, fixed_names = NULL, p_threshold = 5E-8, maxval = 1, fixed
     o <- fastorder(x)
     if (!is.null(fixed_names)) {
       pnn <- pn[o$ix]
-      opt_index <- o$ix[vapply(fixed_names, function(y) min(match(y, pnn)), integer(1))]
+      opt_index <- o$ix[vapply(fixed_names,
+                               function(y) min(match(y, pnn)), integer(1))]
       loi <- length(opt_index)
       o$ix <- c(opt_index, o$ix[!o$ix %in% opt_index])
       o$x <- x[o$ix]
@@ -54,8 +67,13 @@ sumrank <- function(p, fixed_names = NULL, p_threshold = 5E-8, maxval = 1, fixed
     p_exp <- ms * log(cumsum(o$x)) - lgamma_values
     p2 <- exp(p_exp)
 
-    # this prevents a single trait with a very low p-value being lower than the fixed names set
-    n <- if (!is.null(fixed_names)) pmax(which.min(p2[loi:m]) + loi - 1, loi) else which.min(p2)
+    # this prevents a single trait with a very low p-value being
+    # lower than the fixed names set
+    n <- if {
+      (!is.null(fixed_names)) pmax(which.min(p2[loi:m]) + loi - 1, loi)
+      } else {
+        which.min(p2)
+      }
     p_out <- p2[n]
     p_exp_out <- p_exp[n]
     n2 <- if (p_out < p_threshold) n else 0
@@ -63,9 +81,10 @@ sumrank <- function(p, fixed_names = NULL, p_threshold = 5E-8, maxval = 1, fixed
     oo <- if (!is.null(fixed_names)) o$x[(loi + 1):m] else o$x
     nn <- sum(oo < p_threshold) + loi
 
-    # this makes sure that any p-value below p_threshold is included in the final set;
-    # this was introduced to prevent weird scenarios where subsets would be more significant
-    # than adding those subthreshold p-values as well
+    # this makes sure that any p-value below p_threshold is included in
+    # the final set; this was introduced to prevent weird scenarios where
+    # subsets would be more significant than adding those subthreshold
+    # p-values as well
     if (fixed && nn > n2) {
       n2 <- nn
       p_out <- p2[nn]
