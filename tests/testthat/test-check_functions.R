@@ -64,7 +64,7 @@ test_that("`check_z` can pass the check when needed", {
 
 test_that("`check_z` can deal with illogical values", {
   expect_error(check_z(list(1), v_2, two_traits = TRUE))
-  expect_error(check_z(list(1, c(1,2)), v_2))
+  expect_error(check_z(list(1, c(1, 2)), v_2))
   expect_error(check_z(z_na, v_2))
   expect_error(check_z(z_nan, v_2))
   expect_error(check_z(z_null, v_2))
