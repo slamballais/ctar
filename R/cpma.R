@@ -35,16 +35,27 @@ cpma <- function(p,
 
   # run
   final <- make_final(l)
+  oo <- ee <- rep(NA, m)
   for (i in seq_len(l[1])) {
     x <- pm[i, ]
     o <- fastorder(x)
     ms <- 1 / (cumsum(-log(o$x)) / 1:m)
     an <- -log(o$x) - epsilon
     ap <- -log(o$x) + epsilon
-    oo <- sapply(1:m, function(i)
-      sum(log(exp(an[1:i] * -ms[i]) - exp(ap[1:i] * -ms[i]))))
-    ee <- sapply(1:m, function(i) sum(log(exp(-an[1:i]) - exp(-ap[1:i]))))
-    p2 <- pchisq(abs(oo - ee) * 2, 1, lower.tail = FALSE)
+    for (j in seq_len(m)) {
+      an_tmp <- an[1:i] * -ms[i]
+      ap_tmp <- ap[1:i] * -ms[i]
+      an_exp <- exp(an_tmp)
+      ap_exp <- exp(ap_tmp)
+      oo_tmp <- sum(log(an_exp - ap_exp))
+      an_exp2 <- exp(-an[1:i])
+      ap_exp2 <- exp(-ap[1:i])
+      ee_tmp <- sum(log(an_exp2 - ap_exp2))
+      oo[j] <- oo_tmp
+      ee[j] <- ee_tmp
+    }
+    diff_oo_ee <- abs(oo - ee)
+    p2 <- pchisq(diff_oo_ee * 2, 1, lower.tail = FALSE)
     p3 <- min(p2)
     n <- which.min(p2)
     n2 <- if (p3 < p_threshold) n else 0

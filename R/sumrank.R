@@ -58,10 +58,11 @@ sumrank <- function(p,
     o <- fastorder(x)
     if (!is.null(fixed_names)) {
       pnn <- pn[o$ix]
-      opt_index <- o$ix[vapply(fixed_names,
-                               function(y) min(match(y, pnn)), integer(1))]
+      opt_i <- vapply(fixed_names, function(y) min(match(y, pnn)), integer(1))
+      opt_index <- o$ix[opt_i]
       loi <- length(opt_index)
-      o$ix <- c(opt_index, o$ix[!o$ix %in% opt_index])
+      new_ix <- o$ix[!o$ix %in% opt_index]
+      o$ix <- c(opt_index, new_ix)
       o$x <- x[o$ix]
     }
     p_exp <- ms * log(cumsum(o$x)) - lgamma_values
@@ -69,16 +70,25 @@ sumrank <- function(p,
 
     # this prevents a single trait with a very low p-value being
     # lower than the fixed names set
-    n <- if (!is.null(fixed_names)) {
-      pmax(which.min(p2[loi:m]) + loi - 1, loi)
-      } else {
-        which.min(p2)
-      }
+    if (!is.null(fixed_names)) {
+      tmp_low <- which.min(p2[loi:m])
+      n <- pmax(tmp_low + loi - 1, loi)
+    } else {
+      n <- which.min(p2)
+    }
     p_out <- p2[n]
     p_exp_out <- p_exp[n]
-    n2 <- if (p_out < p_threshold) n else 0
+    n2 <- if (p_out < p_threshold) {
+      n
+    } else {
+      0
+    }
     traits <- o$ix[seq_len(n2)]
-    oo <- if (!is.null(fixed_names)) o$x[(loi + 1):m] else o$x
+    oo <- if (!is.null(fixed_names)) {
+      o$x[(loi + 1):m]
+    } else {
+      o$x
+    }
     nn <- sum(oo < p_threshold) + loi
 
     # this makes sure that any p-value below p_threshold is included in

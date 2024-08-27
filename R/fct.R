@@ -34,7 +34,9 @@ fct <- function(p,
   for (i in seq_len(l[1])) {
     x <- pm[i, ]
     o <- fastorder(x)
-    p2 <- pchisq(cumsum(log(o$x)) * -2, df = 1:m * 2, lower.tail = FALSE)
+    tmp_val <- cumsum(log(o$x)) * -2
+    tmp_df <- 1:m * 2
+    p2 <- pchisq(tmp_val, df = tmp_df, lower.tail = FALSE)
     p3 <- min(p2)
     n <- which.min(p2)
     n2 <- if (p3 < p_threshold) n else 0
