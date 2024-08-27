@@ -10,6 +10,7 @@
 * [#24](https://github.com/slamballais/ctar/pull/24): Added `codecov` checks.
 * [832cf03](https://github.com/slamballais/ctar/commit/832cf03e009983473a076f7830354f093e4211b8): Added a GitHub Actions for PR commands.
 * [271d077](https://github.com/slamballais/ctar/commit/271d077ab0baef5ea875cafd27548ef646eb62bc): Modified argument names to fit `lintr` (e.g., `.MAXVAL` to `maxval`).
+* [56baa27](https://github.com/slamballais/ctar/commit/56baa27391d7619f3425bcf22f901d5dbf8cb3d4): Increase the test coverage.
 
 # ctar 0.2.1 (2024-08-27)
 
