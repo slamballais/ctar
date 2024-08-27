@@ -1,3 +1,8 @@
+# ctar 0.2.2
+
+## Bug fixes
+* [](): Removed unnecessary values in `Imports` field.
+
 # ctar 0.2.1
 
 ## Minor tweaks
