@@ -4,23 +4,23 @@
 #'
 #' This function allows you to run the SumRank method given a variety of parameters.
 #'
-#' @param p_in test
+#' @param p test
 #' @param fixed_names test
 #' @param .THRESHOLD test
 #' @param .MAXVAL test
 #' @param .FIXED test
 #' @export
 
-sumrank <- function(p_in, fixed_names = NULL, .THRESHOLD = 5E-8, .MAXVAL = 1, .FIXED = TRUE) {
+sumrank <- function(p, fixed_names = NULL, .THRESHOLD = 5E-8, .MAXVAL = 1, .FIXED = TRUE) {
 
   # check input arguments
-  p_in_args <- check_p_in(p_in, .MAXVAL)
-  m <- p_in_args$number_of_traits
-  l <- p_in_args$number_of_snps
-  p <- p_in_args$p_matrix
+  p_args <- check_p(p, .MAXVAL)
+  m <- p_args$number_of_traits
+  l <- p_args$number_of_snps
+  pm <- p_args$p_matrix
 
-  if (!is.null(fixed_names) && is.null(pn <- names(p_in)))
-    stop("`p_in` should be a named list; names are missing.")
+  if (!is.null(fixed_names) && is.null(pn <- names(p)))
+    stop("`p` should be a named list; names are missing.")
 
   if (!is.numeric(.THRESHOLD) || .THRESHOLD < 0 || .THRESHOLD > 1)
     stop("Make sure `.THRESHOLD` is a number between 0 and 1")
@@ -31,18 +31,17 @@ sumrank <- function(p_in, fixed_names = NULL, .THRESHOLD = 5E-8, .MAXVAL = 1, .F
   if (!is.null(fixed_names)) {
     if (!is.list(fixed_names)) stop("`fixed_names` needs to be a list, with every element representing a set of names from which at least 1 name must be included in the final result.")
     fn <- unlist(fixed_names)
-    if (any(fxx <- !fn %in% pn)) stop("`fixed_names` contains names that are not found in the names of `p_in`: ", paste(fn[fxx], collapse = ", "))
+    if (any(fxx <- !fn %in% pn)) stop("`fixed_names` contains names that are not found in the names of `p`: ", paste(fn[fxx], collapse = ", "))
     if (any(fxx <- duplicated(fn))) stop("`fixed_names` contains certain names multiple times: ", paste(unique(fn[fxx]), collapse = ", "))
   }
 
   # run
   final <- make_final(l)
-
   loi <- 0
   ms <- 1:m
   lgamma_values <- lgamma(ms + 1)
   for (i in seq_len(l[1])) {
-    x <- p[i, ]
+    x <- pm[i, ]
 
     o <- fastorder(x)
     if (!is.null(fixed_names)) {
