@@ -2,7 +2,7 @@
 #'
 #' Run PLACO on z-values from GWAS summary stats
 #'
-#' This function allows you to run the PLACO method given a variety of parameters.
+#' This function lets you to run the PLACO method given a variety of parameters.
 #' Code heavily borrowed from Debashree Ray and Nilanjan Chatterjee.
 #' https://github.com/RayDebashree/PLACO
 #' https://doi.org/10.1371/journal.pgen.1009218

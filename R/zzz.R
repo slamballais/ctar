@@ -2,7 +2,8 @@
 #'
 #' Run non-subset versions of the various methods.
 #'
-#' These were added mostly to confirm that the subset versions are working properly.
+#' These were added mostly to confirm that the subset versions
+#' are working properly.
 #'
 #' @param ... test
 #' @param epsilon test
