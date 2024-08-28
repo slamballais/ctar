@@ -4,13 +4,13 @@ This minor update is mostly focused on documentation.
 
 ### Bug fixes
 * [](): Fixed that `placo` can only accept 2 traits.
-* TODO: [](): Modified "z-value" to "z-score."
+* [](): Modified "z-value" to "z-score."
 
 ### Minor tweaks
 * [](): Filled in the help pages (except examples) for the main functions.
 * [](): Added in examples in help pages.
-* TODO: [](): Added one vignette.
-* TODO: [](): Initiated pkgdown website (https://r-pkgs.org/website.html).
+* [](): Added one vignette.
+* [](): Initiated pkgdown website (https://slamballais.github.io/ctar).
 
 # ctar 0.2.2 (2024-08-27)
 
