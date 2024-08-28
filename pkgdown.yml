@@ -3,7 +3,7 @@ pkgdown: 2.1.0
 pkgdown_sha: ~
 articles:
   cross-trait-associations: cross-trait-associations.html
-last_built: 2024-08-28T21:58Z
+last_built: 2024-08-28T22:00Z
 urls:
   reference: https://slamballais.github.io/ctar/reference
   article: https://slamballais.github.io/ctar/articles
