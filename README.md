@@ -3,6 +3,12 @@
 <!-- badges: start -->
 
 [![R-CMD-check](https://github.com/slamballais/ctar/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/slamballais/ctar/actions/workflows/R-CMD-check.yaml)
+[![CRAN
+status](https://www.r-pkg.org/badges/version/ctar)](https://CRAN.R-project.org/package=ctar)
+![GitHub R package
+version](https://img.shields.io/github/r-package/v/slamballais/ctar)
+[![License: GPL
+v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 [![codecov](https://codecov.io/gh/slamballais/ctar/graph/badge.svg?token=IUVYSTN6SX)](https://codecov.io/gh/slamballais/ctar)
 <!-- badges: end -->
 
