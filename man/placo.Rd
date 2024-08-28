@@ -2,12 +2,12 @@
 % Please edit documentation in R/placo.R
 \name{placo}
 \alias{placo}
-\title{Run PLACO on z-values}
+\title{Run PLACO on z-scores}
 \usage{
 placo(z, z_var = NULL, n_cores = 1)
 }
 \arguments{
-\item{z}{list of numeric vectors. Contains the z-values from each GWAS.}
+\item{z}{list of numeric vectors. Contains the z-scores from each GWAS.}
 
 \item{z_var}{numeric vector. Contains the variances of each \code{z} element.}
 
@@ -17,7 +17,7 @@ placo(z, z_var = NULL, n_cores = 1)
 Returns a numeric vector containing the p-values from PLACO.
 }
 \description{
-This function allows you to run the PLACO method on z-values from GWAS
+This function allows you to run the PLACO method on z-scores from GWAS
 summary statistics, given a variety of parameters. The code for this function
 is heavily borrowed from the original PLACO function as written by Debashree
 Jay and Nilanjan Chatterjee (https://github.com/RayDebashree/PLACO).

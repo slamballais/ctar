@@ -7,7 +7,7 @@
 check_z(z, z_var = NULL, two_traits = FALSE)
 }
 \arguments{
-\item{z}{list of numeric vectors. Contains the z-values from each GWAS.}
+\item{z}{list of numeric vectors. Contains the z-scores from each GWAS.}
 
 \item{z_var}{numeric vector. Contains the variances of each element of
 \code{z}.}

@@ -5,7 +5,7 @@ z_t <- list(c(2, 3), c(2, 3))
 v_3 <- rep(1, 3)
 z_3 <- list(c(1, 1), c(2, 2), c(3, 3))
 
-test_that("placo works for two z values", {
+test_that("placo works for two z-scores", {
   expect_equal(placo(list(2, 2),     v_2), 0.0064596, tolerance = 1E-5)
   expect_equal(placo(list(-2, -2),   v_2), 0.0064596, tolerance = 1E-5)
   expect_equal(placo(list(0, 0),     v_2), 0.99999, tolerance = 1E-5)

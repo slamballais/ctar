@@ -1,11 +1,11 @@
 #' @name placo
-#' @title Run PLACO on z-values
+#' @title Run PLACO on z-scores
 #' @description
-#' This function allows you to run the PLACO method on z-values from GWAS
+#' This function allows you to run the PLACO method on z-scores from GWAS
 #' summary statistics, given a variety of parameters. The code for this function
 #' is heavily borrowed from the original PLACO function as written by Debashree
 #' Jay and Nilanjan Chatterjee (https://github.com/RayDebashree/PLACO).
-#' @param z list of numeric vectors. Contains the z-values from each GWAS.
+#' @param z list of numeric vectors. Contains the z-scores from each GWAS.
 #' @param z_var numeric vector. Contains the variances of each \code{z} element.
 #' @param n_cores integer (default: 1). Number of cores to be used.
 #' @return Returns a numeric vector containing the p-values from PLACO.
