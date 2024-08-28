@@ -1,7 +1,13 @@
 PKG_LIBS = $(LAPACK_LIBS) $(BLAS_LIBS) $(FLIBS)
 
 # Disable optimization and add debug symbols for coverage builds
-PKG_CFLAGS = -g -O0
-PKG_CXXFLAGS = -g -O0
-PKG_FFLAGS = -g -O0
-PKG_FCFLAGS = -g -O0
+ifdef COVR
+  ifeq ($(UNAME_S),Linux)
+    PKG_CFLAGS = -g -O0
+  endif
+  ifeq ($(UNAME_S),Darwin)
+    PKG_CFLAGS = -g -O0
+  endif
+else
+  PKG_CFLAGS = -O2
+endif
