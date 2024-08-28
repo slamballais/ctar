@@ -28,7 +28,7 @@ The `ctar` package provides a number of cross-trait association methods. The met
 
 ```{r, eval = FALSE}
 if (!require("devtools", quietly = TRUE))
-    install.packages("devtools")
+  install.packages("devtools")
 devtools::install_github("slamballais/ctar")
 ```
 
