@@ -3,8 +3,7 @@
 <!-- badges: start -->
 
 [![R-CMD-check](https://github.com/slamballais/ctar/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/slamballais/ctar/actions/workflows/R-CMD-check.yaml)
-[![Codecov test
-coverage](https://codecov.io/gh/slamballais/ctar/branch/main/graph/badge.svg)](https://app.codecov.io/gh/slamballais/ctar?branch=main)
+[![codecov](https://codecov.io/gh/slamballais/ctar/graph/badge.svg?token=IUVYSTN6SX)](https://codecov.io/gh/slamballais/ctar)
 <!-- badges: end -->
 
 ## Overview
