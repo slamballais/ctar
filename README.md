@@ -3,7 +3,7 @@
 <!-- badges: start -->
 
 [![R-CMD-check](https://github.com/slamballais/ctar/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/slamballais/ctar/actions/workflows/R-CMD-check.yaml)
-[![test-coverage](https://github.com/tidyverse/ctar/actions/workflows/test-coverage.yaml/badge.svg)](https://github.com/tidyverse/ctar/actions/workflows/test-coverage.yaml)
+[![test-coverage](https://github.com/ctar/actions/workflows/test-coverage.yaml/badge.svg)](https://github.com/ctar/actions/workflows/test-coverage.yaml)
 <!-- badges: end -->
 
 ## Overview
