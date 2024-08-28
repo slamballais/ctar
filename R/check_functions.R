@@ -1,17 +1,14 @@
-#' @name check_functions_from_ctar
-#' @rdname check_functions_from_ctar
-#'
-#' @title check_functions from ctar
-#'
-#' @param n_cores test
-#' @param p test
-#' @param maxval test
-#' @param two_traits test
-#' @param z test
-#' @param z_var test
-NULL
-
-#' @rdname check_functions_from_ctar
+#' @name check_cores
+#' @family check_functions_from_ctar
+#' @title Checking n_cores argument
+#' @description
+#' Checks the validity of the n_cores input argument that is used within the
+#' \code{ctar} package.
+#' @param n_cores integer. The number of cores to be used, for parallel
+#' processing.
+#' @return `NULL`, invisibly. The function is called for its side effects.
+#' @examples
+#' check_cores(1)
 #' @export
 
 check_cores <- function(n_cores) {
@@ -25,7 +22,26 @@ check_cores <- function(n_cores) {
   invisible()
 }
 
-#' @rdname check_functions_from_ctar
+#' @name check_p
+#' @family check_functions_from_ctar
+#' @title Checking \code{p} and \code{maxval} arguments
+#' @description
+#' Checks the validity of the \code{p} and \code{maxval} input arguments that
+#' is used within the \code{ctar} package.
+#' @param p list of numeric vectors. Contains the p-values from each GWAS.
+#' @param maxval numeric scalar in range \eqn{(0, 1]} (default: 1).
+#' The maximum value for p-values to be considered for analysis.
+#' @param two_traits logical (default: FALSE). Is the call for two traits?
+#' @return \code{check_p} returns a list with three elements:
+#' \itemize{
+#'   \item \code{number_of_traits}: The number of traits.
+#'   \item \code{number_of_snps}: The number of SNPs.
+#'   \item \code{p_matrix}: \code{p} as a matrix.
+#' }
+#' @examples
+#' p <- list(c(0.01, 0.02), c(0.03, 0.04))
+#' maxval <- 0.05
+#' check_p(p, maxval)
 #' @export
 
 check_p <- function(p, maxval, two_traits = FALSE) {
@@ -49,7 +65,21 @@ check_p <- function(p, maxval, two_traits = FALSE) {
   return(out)
 }
 
-#' @rdname check_functions_from_ctar
+#' @name check_z
+#' @family check_functions_from_ctar
+#' @title Checking \code{z} and \code{z_var} arguments
+#' @description
+#' Checks the validity of the \code{z} and \code{z_var} input arguments that
+#' is used within the \code{ctar} package.
+#' @param z list of numeric vectors. Contains the z-values from each GWAS.
+#' @param z_var numeric vector. Contains the variances of each element of
+#' \code{z}.
+#' @param two_traits logical (default: FALSE). Is the call for two traits?
+#' @return `NULL`, invisibly. The function is called for its side effects.
+#' @examples
+#' z <- list(c(1, 1.1), c(1, 1.3))
+#' z_var <- c(0.95, 0.97)
+#' check_z(z, z_var, two_traits = TRUE)
 #' @export
 
 check_z <- function(z, z_var = NULL, two_traits = FALSE) {

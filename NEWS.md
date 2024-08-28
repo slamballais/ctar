@@ -1,3 +1,13 @@
+# ctar 0.2.3 (TO-BE-ADDED)
+
+This minor update is mostly focused on documentation.
+
+## Minor tweaks
+* [](): Filled in the help pages (except examples) for the main functions.
+* TODO: [](): Added in examples in help pages.
+* TODO: [](): Added one vignette.
+* TODO: [](): Initiated pkgdown website (https://r-pkgs.org/website.html).
+
 # ctar 0.2.2 (2024-08-27)
 
 ### Bug fixes

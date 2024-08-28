@@ -2,23 +2,45 @@
 % Please edit documentation in R/fct.R
 \name{fct}
 \alias{fct}
-\title{Run FCT}
+\title{Run FCT on p-values}
 \usage{
 fct(p, p_threshold = 5e-08, maxval = 1, fixed = TRUE)
 }
 \arguments{
-\item{p}{test}
+\item{p}{list of numeric vectors. Contains the p-values from each GWAS.}
 
-\item{p_threshold}{test}
+\item{p_threshold}{Numeric scalar (default: 5E-8). The threshold for which
+we deem an association statistically significant.}
 
-\item{maxval}{test}
+\item{maxval}{numeric scalar in range \eqn{(0, 1]} (default: 1).
+The maximum value for p-values to be considered for analysis.}
 
-\item{fixed}{test}
+\item{fixed}{logical (default: TRUE). If the cross-trait association for
+>1 traits reaches \code{p_threshold} but a single trait has the lowest
+p-value of all combinations, return the result for the >1 traits instead.
+This is to avoid scenarios where there does seem to be a cross-trait
+association, but that is suppressed due to statistical properties.}
+}
+\value{
+Returns a list with four elements, focused on the optimal subset
+for each SNP:
+\itemize{
+  \item \code{p}: numeric vector. For each SNP, the p-value of the optimal
+  subset.
+  \item \code{n}: numeric vector. For each SNP, the number of traits in the
+  optimal subset.
+  \item \code{traits}: list of characters. For each SNP, the names of the
+  traits that are in the optimal subset.
+  \item \code{p_exp}: numeric vector. For each SNP, the -log10 p-value of
+  the optimal subset.
+}
 }
 \description{
-Run FCT on p-values from GWAS summary stats
-}
-\details{
 This function allows you to run the Fisher's combined probability test (FCT)
-given a variety of parameters.
+method on p-values from GWAS summary statistics, given a variety of
+parameters.
+}
+\examples{
+p <- replicate(10, runif(100), simplify = FALSE)
+out <- fct(p)
 }

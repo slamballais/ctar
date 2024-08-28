@@ -1,15 +1,15 @@
-#' Run FCT
-#'
-#' Run FCT on p-values from GWAS summary stats
-#'
+#' @name fct
+#' @title Run FCT on p-values
+#' @description
 #' This function allows you to run the Fisher's combined probability test (FCT)
-#' given a variety of parameters.
-#'
-#' @param p test
-#' @param p_threshold test
-#' @param maxval test
-#' @param fixed test
+#' method on p-values from GWAS summary statistics, given a variety of
+#' parameters.
+#' @inheritParams sumrank
+#' @inherit sumrank return
 #' @importFrom stats pchisq
+#' @examples
+#' p <- replicate(10, runif(100), simplify = FALSE)
+#' out <- fct(p)
 #' @export
 
 fct <- function(p,

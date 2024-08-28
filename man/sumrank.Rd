@@ -2,25 +2,48 @@
 % Please edit documentation in R/sumrank.R
 \name{sumrank}
 \alias{sumrank}
-\title{Run SumRank}
+\title{Run SumRank on p-values}
 \usage{
 sumrank(p, fixed_names = NULL, p_threshold = 5e-08, maxval = 1, fixed = TRUE)
 }
 \arguments{
-\item{p}{test}
+\item{p}{list of numeric vectors. Contains the p-values from each GWAS.}
 
-\item{fixed_names}{test}
+\item{fixed_names}{list of characters. Each element of the list contains a
+set of traits (names of \code{p}) from which at least one trait has to be
+present in the final result for each SNP.}
 
-\item{p_threshold}{test}
+\item{p_threshold}{Numeric scalar (default: 5E-8). The threshold for which
+we deem an association statistically significant.}
 
-\item{maxval}{test}
+\item{maxval}{numeric scalar in range \eqn{(0, 1]} (default: 1).
+The maximum value for p-values to be considered for analysis.}
 
-\item{fixed}{test}
+\item{fixed}{logical (default: TRUE). If the cross-trait association for
+>1 traits reaches \code{p_threshold} but a single trait has the lowest
+p-value of all combinations, return the result for the >1 traits instead.
+This is to avoid scenarios where there does seem to be a cross-trait
+association, but that is suppressed due to statistical properties.}
+}
+\value{
+Returns a list with four elements, focused on the optimal subset
+for each SNP:
+\itemize{
+  \item \code{p}: numeric vector. For each SNP, the p-value of the optimal
+  subset.
+  \item \code{n}: numeric vector. For each SNP, the number of traits in the
+  optimal subset.
+  \item \code{traits}: list of characters. For each SNP, the names of the
+  traits that are in the optimal subset.
+  \item \code{p_exp}: numeric vector. For each SNP, the -log10 p-value of
+  the optimal subset.
+}
 }
 \description{
-Run SumRank on p-values from GWAS summary stats
+This function allows you to run the SumRank method on p-values from GWAS
+summary statistics, given a variety of parameters.
 }
-\details{
-This function allows you to run the SumRank method
-given a variety of parameters.
+\examples{
+p <- replicate(10, runif(100), simplify = FALSE)
+out <- sumrank(p)
 }
