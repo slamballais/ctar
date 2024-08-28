@@ -1,4 +1,7 @@
 url: https://slamballais.github.io/ctar/
 template:
   bootstrap: 5
-
+  bootswatch: flatly
+  bslib:
+    primary: "#2C3D50"
+    secondary: "#A7C6E6"
