@@ -26,3 +26,4 @@ Config/testthat/edition: 3
 VignetteBuilder: knitr
 Depends: 
     R (>= 2.10)
+URL: https://slamballais.github.io/ctar/
