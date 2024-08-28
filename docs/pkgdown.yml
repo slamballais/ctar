@@ -1,0 +1,10 @@
+pandoc: 3.1.1
+pkgdown: 2.0.7
+pkgdown_sha: ~
+articles:
+  cross-trait-associations: cross-trait-associations.html
+last_built: 2024-08-28T20:54Z
+urls:
+  reference: https://slamballais.github.io/ctar/reference
+  article: https://slamballais.github.io/ctar/articles
+
