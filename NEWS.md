@@ -2,9 +2,13 @@
 
 This minor update is mostly focused on documentation.
 
-## Minor tweaks
+### Bug fixes
+* [](): Fixed that `placo` can only accept 2 traits.
+* TODO: [](): Modified "z-value" to "z-score."
+
+### Minor tweaks
 * [](): Filled in the help pages (except examples) for the main functions.
-* TODO: [](): Added in examples in help pages.
+* [](): Added in examples in help pages.
 * TODO: [](): Added one vignette.
 * TODO: [](): Initiated pkgdown website (https://r-pkgs.org/website.html).
 

@@ -1,0 +1,112 @@
+---
+title: "Cross-trait associations"
+date: "`r Sys.Date()`"
+output: 
+  rmarkdown::html_vignette:
+    number_sections: true
+    toc: true
+vignette: >
+  %\VignetteIndexEntry{Cross-trait associations}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup, include = FALSE}
+library(ctar)
+```
+
+The `ctar` package provides a number of cross-trait association methods. The methods were written to follow a similar structure for their input arguments. Furthermore, the methods benefit from various enhancements such as parallel processing and speed optimization. If you want to use this package, please make sure that you are aware of how cross-trait association methods work.
+
+# Installation
+
+```{r, eval = FALSE}
+if (!require("devtools", quietly = TRUE))
+    install.packages("devtools")
+devtools::install_github("slamballais/ctar")
+```
+
+# Overview
+
+# Data preparation
+
+We will look at four datasets: anx, bip, dep, and scz. Let's explore one of them:
+
+```{r}
+ss <- list(anx, bip, dep, scz)
+names(ss) <- c("anx", "bip", "dep", "scz")
+print(ss$anx)
+```
+
+The dataset represents a GWAS for anxiety. The six columns represent:
+
+* **SNP**: Each row is one SNP, identified by their rs-id.
+* **A1**: The effect allele.
+* **A2**: The non-effect allele.
+* **Z**: The z-value.
+* **P**: The corresponding p-value.
+* **N**: The sample size.
+
+## Restrict to overlapping SNPs
+
+All four datasets have the same columns. They have also have the same \code{A1} and \code{A2} for each overlapping SNP. They do not, however, cover the same SNPs. We first have to make sure that the sets that we analyze only cover the same SNPs. Here, we show one possible way to do that:
+
+```{r}
+common_snps <- Reduce(intersect, lapply(ss, function(x) x$SNP))
+print(common_snps)
+
+ss_common <- lapply(ss, function(x) subset(x, SNP %in% common_snps))
+names(ss_common) <- names(ss)
+print(ss_common$anx)
+```
+
+## Prepare the p-values and z-scores
+
+Next, we need to make the \code{p}, \code{z}, and \code{z_var} variables, depending on which cross-trait association methods we want to use (for example, \code{sumrank} only needs \code{p}). 
+
+```{r}
+p <- lapply(ss_common, `[[`, "P")
+str(p)
+
+z <- lapply(ss_common, `[[`, "Z")
+str(z)
+
+z_var <- sapply(z, var)
+print(z_var)
+# normally, z_var values are much closer to 1, so we'll change it:
+z_var <- rep(1, 4)
+```
+
+# Running cross-trait association methods
+
+## SumRank
+```{r}
+res_sumrank <- sumrank(p)
+print(res_sumrank)
+```
+
+## FCT
+```{r}
+res_fct <- fct(p)
+print(res_fct)
+```
+
+## CPMA
+```{r}
+res_cpma <- cpma(p)
+print(res_cpma)
+```
+
+## PLACO
+```{r}
+# for bip and scz
+res_placo <- placo(z[c(2, 4)], z_var[c(2, 4)], n_cores = 2)
+print(res_placo)
+```
+
