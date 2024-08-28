@@ -71,7 +71,7 @@ check_p <- function(p, maxval, two_traits = FALSE) {
 #' @description
 #' Checks the validity of the \code{z} and \code{z_var} input arguments that
 #' is used within the \code{ctar} package.
-#' @param z list of numeric vectors. Contains the z-values from each GWAS.
+#' @param z list of numeric vectors. Contains the z-scores from each GWAS.
 #' @param z_var numeric vector. Contains the variances of each element of
 #' \code{z}.
 #' @param two_traits logical (default: FALSE). Is the call for two traits?
@@ -86,9 +86,9 @@ check_z <- function(z, z_var = NULL, two_traits = FALSE) {
   if (!is.list(z)) stop("`z` needs to be a list.")
   m <- length(z)
   if (two_traits && m != 2)
-    stop("`z` should have 2 elements (i.e., two z-value vectors)")
+    stop("`z` should have 2 elements (i.e., two z-score vectors)")
   if (m < 2)
-    stop("`z` should have at least 2 elements (i.e., multiple z-value vectors)")
+    stop("`z` should have at least 2 elements (i.e., multiple z-score vectors)")
   if (any(!sapply(z, is.numeric))) stop("all values of `z` should be numeric")
   if (any(sapply(z, function(x) any(is.na(x))))) stop("NAs found in z")
   l <- sapply(z, length)
