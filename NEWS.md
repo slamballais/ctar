@@ -1,4 +1,4 @@
-# ctar 0.2.3 (TO-BE-ADDED)
+# ctar 0.2.3 (2024-08-28)
 
 This minor update is mostly focused on documentation.
 
