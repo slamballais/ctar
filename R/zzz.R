@@ -1,15 +1,3 @@
-#' Non-subset functions
-#'
-#' Run non-subset versions of the various methods.
-#'
-#' These were added mostly to confirm that the subset versions
-#' are working properly.
-#'
-#' @param ... test
-#' @param epsilon test
-#' @importFrom stats pchisq
-#' @export
-
 p_cpma <- function(..., epsilon = 0.001) {
   args <- list(...)
   l <- sapply(args, length)

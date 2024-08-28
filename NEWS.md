@@ -1,3 +1,17 @@
+# ctar 0.2.3 (2024-08-28)
+
+This minor update is mostly focused on documentation.
+
+### Bug fixes
+* [19e18b1](https://github.com/slamballais/ctar/pull/27/commits/19e18b113d752d49c51483034599fde647d3b89e): Fixed that `placo` can only accept 2 traits.
+* [f406a97](https://github.com/slamballais/ctar/pull/27/commits/f406a97e4ac2d113e5e69951a9a03129e8b26da3): Modified "z-value" to "z-score."
+
+### Minor tweaks
+* [#26](https://github.com/slamballais/ctar/pull/26): Filled in the help pages (except examples) for the main functions.
+* [#26](https://github.com/slamballais/ctar/pull/26): Added in examples in help pages.
+* [1fc071c](https://github.com/slamballais/ctar/pull/27/commits/1fc071cfc9522ed5cb88dd902594215ddff8bf72): Added one vignette.
+* [759025d](https://github.com/slamballais/ctar/pull/27/commits/759025de6d987a2d1c69a93cb711f5717086e4e2): Initiated pkgdown website (https://slamballais.github.io/ctar).
+
 # ctar 0.2.2 (2024-08-27)
 
 ### Bug fixes

@@ -2,23 +2,28 @@
 % Please edit documentation in R/placo.R
 \name{placo}
 \alias{placo}
-\title{Run PLACO}
+\title{Run PLACO on z-scores}
 \usage{
 placo(z, z_var = NULL, n_cores = 1)
 }
 \arguments{
-\item{z}{test}
+\item{z}{list of numeric vectors. Contains the z-scores from each GWAS.}
 
-\item{z_var}{test}
+\item{z_var}{numeric vector. Contains the variances of each \code{z} element.}
 
-\item{n_cores}{test}
+\item{n_cores}{integer (default: 1). Number of cores to be used.}
+}
+\value{
+Returns a numeric vector containing the p-values from PLACO.
 }
 \description{
-Run PLACO on z-values from GWAS summary stats
+This function allows you to run the PLACO method on z-scores from GWAS
+summary statistics, given a variety of parameters. The code for this function
+is heavily borrowed from the original PLACO function as written by Debashree
+Jay and Nilanjan Chatterjee (https://github.com/RayDebashree/PLACO).
 }
-\details{
-This function lets you to run the PLACO method given a variety of parameters.
-Code heavily borrowed from Debashree Ray and Nilanjan Chatterjee.
-https://github.com/RayDebashree/PLACO
-https://doi.org/10.1371/journal.pgen.1009218
+\examples{
+z <- list(c(1, 1.1), c(1, 1.3))
+z_var <- c(0.95, 0.97)
+out <- placo(z, z_var)
 }

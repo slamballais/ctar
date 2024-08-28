@@ -1,16 +1,16 @@
-#' Run CPMA
-#'
-#' Run CPMA on p-values from GWAS summary stats
-#'
+#' @name cpma
+#' @title Run CPMA on p-values
+#' @description
 #' This function allows you to run the cross-phenotype meta-analysis (CPMA)
-#' method given a variety of parameters.
-#'
-#' @param p test
-#' @param epsilon test
-#' @param p_threshold test
-#' @param maxval test
-#' @param fixed test
+#' method on p-values from GWAS summary statistics, given a variety of
+#' parameters.
+#' @inheritParams sumrank
+#' @inherit sumrank return
+#' @param epsilon numeric scalar (default: 0.001). Offset parameter.
 #' @importFrom stats pchisq
+#' @examples
+#' p <- replicate(10, runif(100), simplify = FALSE)
+#' out <- cpma(p)
 #' @export
 
 cpma <- function(p,

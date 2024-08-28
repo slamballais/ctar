@@ -2,17 +2,24 @@
 % Please edit documentation in R/fastorder.R
 \name{fastorder}
 \alias{fastorder}
-\title{Sort Positive Floats and Return Indices}
+\title{Sort ordering numeric vectors}
 \usage{
 fastorder(x)
 }
 \arguments{
-\item{x}{A numeric vector of positive floats.}
+\item{x}{numeric vector.}
 }
 \value{
-A list with two elements: "x" and "ix".
+\code{fastorder} returns a list with two elements:
+\itemize{
+  \item \code{x}: numeric vector. The ordered version of the vector.
+  \item \code{ix}: numeric vector. The corresponding indices.
+}
 }
 \description{
-This function sorts a numeric vector of positive floats and
-returns the sorted values and their original indices.
+Order a numeric vector in ascending order. Identical values are ordered in
+descending order of occurrence.
+}
+\examples{
+out <- fastorder(mtcars$cyl)
 }
