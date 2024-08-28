@@ -3,7 +3,8 @@
 <!-- badges: start -->
 
 [![R-CMD-check](https://github.com/slamballais/ctar/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/slamballais/ctar/actions/workflows/R-CMD-check.yaml)
-[![test-coverage](https://github.com/slamballais/ctar/actions/workflows/test-coverage.yaml/badge.svg)](https://github.com/slamballais/ctar/actions/workflows/test-coverage.yaml)
+[![Codecov test
+coverage](https://codecov.io/gh/slamballais/ctar/branch/main/graph/badge.svg)](https://app.codecov.io/gh/slamballais/ctar?branch=main)
 <!-- badges: end -->
 
 ## Overview
