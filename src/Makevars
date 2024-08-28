@@ -1,1 +1,7 @@
 PKG_LIBS = $(LAPACK_LIBS) $(BLAS_LIBS) $(FLIBS)
+
+# Disable optimization and add debug symbols for coverage builds
+PKG_CFLAGS = -g -O0
+PKG_CXXFLAGS = -g -O0
+PKG_FFLAGS = -g -O0
+PKG_FCFLAGS = -g -O0
