@@ -1,15 +1,36 @@
-#' Run SumRank
-#'
-#' Run SumRank on p-values from GWAS summary stats
-#'
-#' This function allows you to run the SumRank method
-#' given a variety of parameters.
-#'
-#' @param p test
-#' @param fixed_names test
-#' @param p_threshold test
-#' @param maxval test
-#' @param fixed test
+#' @name sumrank
+#' @title Run SumRank on p-values
+#' @description
+#' This function allows you to run the SumRank method on p-values from GWAS
+#' summary statistics, given a variety of parameters.
+#' @param p list of numeric vectors. Contains the p-values from each GWAS.
+#' @param fixed_names list of characters. Each element of the list contains a
+#' set of traits (names of \code{p}) from which at least one trait has to be
+#' present in the final result for each SNP.
+#' @param p_threshold Numeric scalar (default: 5E-8). The threshold for which
+#' we deem an association statistically significant.
+#' @param maxval numeric scalar in range \eqn{(0, 1]} (default: 1).
+#' The maximum value for p-values to be considered for analysis.
+#' @param fixed logical (default: TRUE). If the cross-trait association for
+#' >1 traits reaches \code{p_threshold} but a single trait has the lowest
+#' p-value of all combinations, return the result for the >1 traits instead.
+#' This is to avoid scenarios where there does seem to be a cross-trait
+#' association, but that is suppressed due to statistical properties.
+#' @return Returns a list with four elements, focused on the optimal subset
+#' for each SNP:
+#' \itemize{
+#'   \item \code{p}: numeric vector. For each SNP, the p-value of the optimal
+#'   subset.
+#'   \item \code{n}: numeric vector. For each SNP, the number of traits in the
+#'   optimal subset.
+#'   \item \code{traits}: list of characters. For each SNP, the names of the
+#'   traits that are in the optimal subset.
+#'   \item \code{p_exp}: numeric vector. For each SNP, the -log10 p-value of
+#'   the optimal subset.
+#' }
+#' @examples
+#' p <- replicate(10, runif(100), simplify = FALSE)
+#' out <- sumrank(p)
 #' @export
 
 sumrank <- function(p,
