@@ -19,7 +19,7 @@
 
 placo <- function(z, z_var = NULL, n_cores = 1) {
 
-  check_z(z, z_var)
+  check_z(z, z_var, two_traits = TRUE)
   check_cores(n_cores)
 
   if (is.null(z_var)) z_var <- c(sd(z[[1]]), sd(z[[2]]))
