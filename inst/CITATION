@@ -1,0 +1,8 @@
+bibentry(
+  bibtype  = "Article",
+  title    = "The SumRank method efficiently detects valid pleiotropic variants using GWAS summary level data",
+  author   = "Sander Lamballais, Gennady V. Roshchupkin, Raymond A. Poot, View ORCID ProfileSteven A. Kushner, M. Arfan Ikram, Hieab H. H. Adams, and Henning Tiemeier",
+  journal  = "medRXiv",
+  year     = 2022,
+  doi      = "10.1101/2022.09.07.22279671"
+)
