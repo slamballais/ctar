@@ -1,7 +1,7 @@
 Package: ctar
 Type: Package
 Title: Cross-trait association methods in R
-Version: 0.2.3
+Version: 0.2.4
 Authors@R: person("Sander", "Lamballais", 
     email = "lamballais.sander@gmail.com", 
     role = c("aut", "cre"),

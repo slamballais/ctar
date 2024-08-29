@@ -1,3 +1,15 @@
+# ctar 0.2.4 (DATE TO ADD)
+
+### Bug fixes
+* TODO: [](): Modified `fastorder` to order identical values in the same way as `sort(index.return = TRUE)`.
+
+### Minor tweaks
+* TODO: [](): Added CITATION file.
+* TODO: [](): Added warnings/errors to `placo` for when `z` is too large, via the `z2_threshold` and `large_z_action` arguments.
+* TODO: [](): Modified the `placo` output to fall in line with the output of `sumrank`, `cpma`, and `fct`.
+* TODO: [](): Rewrote `README.md` to contain substantially more information and guidance.
+* TODO [](): Added the `fixed_names` functionality to `cpma` and `fct`, to be in line with `sumrank`.
+
 # ctar 0.2.3 (2024-08-28)
 
 This minor update is mostly focused on documentation.
